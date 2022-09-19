@@ -40,7 +40,7 @@ const server = http.createServer((request, response) => {
       throw new Error('Error while reading index.html');
     };
 
-    response.end(data);
+    response.end(data.toString('utf8').replace('</body>', `<time>${new Date().toLocaleDateString()}</time> </body>`));
   });
 })
 
