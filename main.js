@@ -1,5 +1,6 @@
-const computedStyleImage = getComputedStyle(document.getElementById('image'));
+const image = document.getElementById('image');
+const computedStyleImage = getComputedStyle(image);
 
 image.addEventListener('load', () => {
-  console.log(`Image\nWidth: ${image.width},\nHeight: ${image.height}`);
+  console.log(`Image\nWidth: ${computedStyleImage.width},\nHeight: ${computedStyleImage.height}`);
 });
