@@ -1,15 +1,15 @@
 const http = require('http');
 const fs = require('fs');
-const imageExtebsionsReg = /\.(png|jpeg|gif)$/;
-const extebsionsJsReg = /\.(js)$/;
+const imageExtensionsReg = /\.(png|jpeg|gif)$/;
+const extensionJsReg = /\.(js)$/;
 
 const server = http.createServer((request, response) => {
   const fileName = request.url.replace('/', '');
   const errorHTML = '<strong>Error!</strong>';
   const errorText = `Error while reading ${fileName}`
 
-  if (imageExtebsionsReg.test(request.url) || extebsionsJsReg.test(request.url)) {
-    fs.readFile(request.url.replace('/', ''), (err, data) => {
+  if (imageExtensionsReg.test(request.url) || extensionJsReg.test(request.url)) {
+    fs.readFile(fileName, (err, data) => {
       if (err) {
         response.end(errorHTML);
         throw new Error(errorText);
